@@ -179,14 +179,12 @@ function App() {
   }, []);
 
   return (
-    <>
-      {/* Film Grain removed for performance - SVG feTurbulence on fixed 100vw element was causing composite lag */}
-      
+    <div style={{ overflowX: 'hidden', width: '100%', position: 'relative' }}>
       {/* Blueprint lines for whole site context */}
       <div className="blueprint-line vertical" style={{ left: '10%' }}></div>
       <div className="blueprint-line vertical" style={{ right: '10%' }}></div>
 
-      {/* Ambient Orbs - using CSS radial-gradient, NO filter:blur */}
+      {/* Ambient Orbs */}
       <div className="ambient-orb orb-blue" style={{ width: '800px', height: '800px', top: '-200px', right: '-200px', opacity: 0.15 }}></div>
       <div className="ambient-orb orb-blue" style={{ width: '1200px', height: '1200px', top: '30%', left: '-400px', opacity: 0.1 }}></div>
 
@@ -677,7 +675,7 @@ function App() {
           </div>
         </footer>
       </div>
-    </>
+    </div>
   );
 }
 

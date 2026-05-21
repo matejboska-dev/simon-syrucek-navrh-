@@ -342,7 +342,6 @@ function App() {
                 <p className="body-large">
                   Můj přístup je postavený na naprosté transparentnosti a disciplíně. Neuznávám skryté poplatky ani sliby, které nelze splnit. Věřím v lidský přístup a v to, že kvalitní prezentace prodává nejlépe.
                 </p>
-                <MagneticButton href="#kontakt" className="btn btn-outline" style={{ marginTop: '2rem' }}>Můj příběh</MagneticButton>
               </FadeIn>
             </div>
           </div>

@@ -1,7 +1,18 @@
 import { useEffect, useState, useRef } from 'react';
 import type { MouseEvent, ReactNode, CSSProperties } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
-import { Home, Key, Search, Maximize, ArrowRight, Camera, MoveHorizontal, CheckCircle2 } from 'lucide-react';
+import { Home, Key, Search, Maximize, ArrowRight, MoveHorizontal, CheckCircle2 } from 'lucide-react';
+
+const IconFacebook = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+);
+const IconInstagram = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+);
+const IconLinkedin = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+);
+import remaxLogoSvg from './assets/remax-logo-full.png';
 import modernMarketingImg from './assets/moderni marketing.png';
 import transparentniProcesImg from './assets/transparentniproces.png';
 import rychlaReakceImg from './assets/rychla reakce.png';
@@ -197,16 +208,15 @@ function App() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="logo" style={{ zIndex: 101 }}>
-              <span className="logo-accent">RE</span><span className="logo-blue">/</span><span className="logo-accent">MAX</span> Šimon Syruček
+              <img src={remaxLogoSvg} alt="RE/MAX" style={{ height: '28px', width: 'auto', display: 'block', marginTop: '-4px' }} />
+              <span style={{ marginLeft: '0.75rem' }}>Šimon Syruček</span>
             </div>
             <div className="desktop-nav">
-              <a href="#o-mne" style={{ color: 'var(--text-color)' }}>O mně</a>
-              <a href="#proc-ja" style={{ color: 'var(--text-color)' }}>Proč já</a>
+              <a href="#o-mne" style={{ color: 'var(--text-color)' }}>Můj příběh</a>
               <a href="#sluzby" style={{ color: 'var(--text-color)' }}>Služby</a>
-              <a href="#lokality" style={{ color: 'var(--text-color)' }}>Lokality</a>
-              <a href="#postup" style={{ color: 'var(--text-color)' }}>Postup</a>
-              <a href="#nabidky" style={{ color: 'var(--text-color)' }}>Nabídky</a>
-              <a href="#reference" style={{ color: 'var(--text-color)' }}>Reference</a>
+              <a href="#proc-ja" style={{ color: 'var(--text-color)' }}>Proč já</a>
+              <a href="#nabidky" style={{ color: 'var(--text-color)' }}>Nemovitosti</a>
+              <a href="#reference" style={{ color: 'var(--text-color)' }}>Co o mně říkají klienti</a>
               <a href="#kontakt" style={{ color: 'var(--accent-blue)' }}>Kontakt</a>
             </div>
             <div 
@@ -228,13 +238,11 @@ function App() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           style={{ position: 'fixed', inset: 0, background: 'rgba(247,247,245,0.95)', backdropFilter: 'blur(30px)', zIndex: 99, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 'clamp(0.75rem, 2.5vh, 2rem)', padding: '2rem' }}
         >
-          <a href="#o-mne" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: 'clamp(1.25rem, 5vw, 2rem)', fontWeight: 600, color: 'var(--text-color)', textDecoration: 'none' }}>O mně</a>
-          <a href="#proc-ja" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: 'clamp(1.25rem, 5vw, 2rem)', fontWeight: 600, color: 'var(--text-color)', textDecoration: 'none' }}>Proč já</a>
+          <a href="#o-mne" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: 'clamp(1.25rem, 5vw, 2rem)', fontWeight: 600, color: 'var(--text-color)', textDecoration: 'none' }}>Můj příběh</a>
           <a href="#sluzby" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: 'clamp(1.25rem, 5vw, 2rem)', fontWeight: 600, color: 'var(--text-color)', textDecoration: 'none' }}>Služby</a>
-          <a href="#lokality" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: 'clamp(1.25rem, 5vw, 2rem)', fontWeight: 600, color: 'var(--text-color)', textDecoration: 'none' }}>Lokality</a>
-          <a href="#postup" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: 'clamp(1.25rem, 5vw, 2rem)', fontWeight: 600, color: 'var(--text-color)', textDecoration: 'none' }}>Postup</a>
-          <a href="#nabidky" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: 'clamp(1.25rem, 5vw, 2rem)', fontWeight: 600, color: 'var(--text-color)', textDecoration: 'none' }}>Nabídky</a>
-          <a href="#reference" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: 'clamp(1.25rem, 5vw, 2rem)', fontWeight: 600, color: 'var(--text-color)', textDecoration: 'none' }}>Reference</a>
+          <a href="#proc-ja" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: 'clamp(1.25rem, 5vw, 2rem)', fontWeight: 600, color: 'var(--text-color)', textDecoration: 'none' }}>Proč já</a>
+          <a href="#nabidky" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: 'clamp(1.25rem, 5vw, 2rem)', fontWeight: 600, color: 'var(--text-color)', textDecoration: 'none' }}>Nemovitosti</a>
+          <a href="#reference" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: 'clamp(1.25rem, 5vw, 2rem)', fontWeight: 600, color: 'var(--text-color)', textDecoration: 'none' }}>Co o mně říkají klienti</a>
           <a href="#kontakt" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: 'clamp(1.25rem, 5vw, 2rem)', fontWeight: 600, color: 'var(--accent-blue)', textDecoration: 'none' }}>Kontakt</a>
         </motion.div>
 
@@ -247,11 +255,13 @@ function App() {
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               style={{ textAlign: 'center' }}
             >
+              <img src={remaxLogoSvg} alt="RE/MAX" style={{ height: '40px', width: 'auto', display: 'block', margin: '0 auto 1.5rem' }} />
               <h1 className="heading-1">Reality s lidským přístupem.</h1>
               <p className="body-large" style={{ maxWidth: '100%' }}>Pomáhám klientům prodávat a kupovat nemovitosti moderně, bezpečně a bez zbytečného stresu.</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '2rem' }}>
                 <a href="#kontakt" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Nezávazná konzultace</a>
-                <a href="#nabidky" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}>Nabídky nemovitostí</a>
+                <a href="#nabidky" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}>Nabídka nemovitostí</a>
+                <a href="#kontakt" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}>Chci prodat</a>
               </div>
             </motion.div>
             <motion.div
@@ -277,11 +287,13 @@ function App() {
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             style={{ position: 'relative', zIndex: 10 }}
           >
+            <img src={remaxLogoSvg} alt="RE/MAX" style={{ height: '44px', width: 'auto', display: 'block', marginBottom: '1.5rem' }} />
             <h1 className="heading-1">Reality s lidským přístupem.</h1>
             <p className="body-large" style={{ maxWidth: '500px' }}>Pomáhám klientům prodávat a kupovat nemovitosti moderně, bezpečně a bez zbytečného stresu.</p>
             <div className="hero-cta" style={{ display: 'flex', gap: '2rem', marginTop: '4rem' }}>
               <MagneticButton href="#kontakt" className="btn btn-primary">Nezávazná konzultace</MagneticButton>
-              <MagneticButton href="#nabidky" className="btn btn-outline">Nabídky nemovitostí</MagneticButton>
+              <MagneticButton href="#nabidky" className="btn btn-outline">Nabídka nemovitostí</MagneticButton>
+              <MagneticButton href="#kontakt" className="btn btn-outline">Chci prodat</MagneticButton>
             </div>
           </motion.div>
           <div className="hero-image-wrapper" style={{ position: 'relative', display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
@@ -333,8 +345,8 @@ function App() {
             </FadeIn>
             <div>
               <FadeIn delay={0.2}>
-                <span className="text-label">Příběh a filozofie</span>
-                <h2 className="heading-2" style={{ fontSize: 'clamp(3rem, 6vw, 5rem)' }}>Transparentnost<br/>& Důvěra</h2>
+                <span className="text-label">Můj příběh</span>
+                <h2 className="heading-2" style={{ fontSize: 'clamp(2rem, 6vw, 5rem)' }}>Transparentnost<br/>& Důvěra</h2>
                 <div className="arch-line-h"></div>
                 <p className="body-large">
                   Působím jako realitní makléř ve společnosti RE/MAX. Pocházím z Úval, takže dobře znám nejen místní prostředí, ale i to, jak důležité je mít kolem sebe lidi, na které je spoleh.
@@ -353,25 +365,19 @@ function App() {
             <span className="text-label">Rozdíl je v detailech</span>
             <h2 className="heading-2">Proč si vybrat mě</h2>
           </FadeIn>
-          <div className="grid-asymmetric">
-            {/* Massive Left Card */}
+          <div className="grid-3-col">
             <TiltCard delay={0.1} bgImage={modernMarketingImg}>
-              <div className="service-icon" style={{ background: 'var(--white)', color: 'var(--text-color)' }}><Camera size={32} /></div>
-              <h3 className="heading-2" style={{ marginBottom: '1rem' }}>Moderní marketing</h3>
-              <p className="body-large" style={{ maxWidth: '400px', margin: 0 }}>Drony, videoprohlídky a profesionální home staging. Dělám vše pro to, aby vaše nemovitost zazářila a prodala se za maximum.</p>
+              <h3 className="heading-3" style={{ marginBottom: '1rem' }}>Férové jednání</h3>
+              <p style={{ color: 'rgba(255,255,255,0.8)', margin: 0 }}>Žádné skryté poplatky ani sliby, které nelze splnit. Věřím v otevřenou komunikaci a fair play přístup.</p>
             </TiltCard>
-            
-            {/* Stacked Right Cards */}
-            <div className="card-stack">
-              <TiltCard delay={0.2} className="card-stack" bgImage={transparentniProcesImg}>
-                <h3 className="heading-3">Transparentní proces</h3>
-                <p>O každém kroku víte. Pravidelné reporty a neustálá komunikace je u mě samozřejmostí.</p>
-              </TiltCard>
-              <TiltCard delay={0.3} className="card-stack" bgImage={rychlaReakceImg}>
-                <h3 className="heading-3">Rychlá reakce</h3>
-                <p>Zájemci nečekají. Odpovídám rychle, prohlídky řeším obratem a obchod plynule směřuji k cíli.</p>
-              </TiltCard>
-            </div>
+            <TiltCard delay={0.2} bgImage={transparentniProcesImg}>
+              <h3 className="heading-3">Transparentní proces</h3>
+              <p style={{ color: 'rgba(255,255,255,0.8)', margin: 0 }}>O každém kroku víte. Pravidelné reporty a neustálá komunikace je u mě samozřejmostí.</p>
+            </TiltCard>
+            <TiltCard delay={0.3} bgImage={rychlaReakceImg}>
+              <h3 className="heading-3">Rychlá reakce</h3>
+              <p style={{ color: 'rgba(255,255,255,0.8)', margin: 0 }}>Zájemci nečekají. Odpovídám rychle, prohlídky řeším obratem a obchod plynule směřuji k cíli.</p>
+            </TiltCard>
           </div>
         </section>
 
@@ -388,19 +394,20 @@ function App() {
         </section>
 
         {/* Services Section */}
-        <section id="sluzby" className="section container" style={{ paddingBottom: '12rem' }}>
+        <section id="sluzby" className="section container" style={{ paddingBottom: 'clamp(8rem, 14vw, 20rem)' }}>
           <div className="arch-line-h"></div>
           <FadeIn>
             <span className="text-label">Služby</span>
-            <h2 className="heading-2">Komplexní realitní servis</h2>
+            <h2 className="heading-2">Kompletní realitní servis</h2>
+            <p className="heading-3" style={{ fontWeight: 300, color: '#555', marginTop: '-2rem', marginBottom: 'clamp(1.5rem, 3vh, 4rem)' }}>Vaše nemovitost – Moje starost!</p>
           </FadeIn>
-          
+
           <div className="services-grid">
             {[
-              { icon: <Home size={32} strokeWidth={1.5} />, title: 'Prodej nemovitostí', desc: 'Komplexní prodej od A do Z s maximálním výnosem.' },
-              { icon: <Key size={32} strokeWidth={1.5} />, title: 'Pronájmy', desc: 'Výběr spolehlivých nájemníků a právní ochrana.' },
-              { icon: <Search size={32} strokeWidth={1.5} />, title: 'Odhad ceny', desc: 'Precizní analýza trhu a určení optimální prodejní ceny.' },
-              { icon: <Maximize size={32} strokeWidth={1.5} />, title: 'Home Staging', desc: 'Příprava nemovitosti na focení a prohlídky pro wow efekt.' }
+              { icon: <Home size={32} strokeWidth={1.5} />, title: 'Prodej nemovitosti', desc: 'Prodej nemovitosti bez starostí, bezpečně a za nejvyšší možnou cenu.' },
+              { icon: <Key size={32} strokeWidth={1.5} />, title: 'Pronájmy', desc: 'Výběr nejvhodnějšího nájemníka. Připravení nájemní smlouvy. Předání nemovitosti.' },
+              { icon: <Search size={32} strokeWidth={1.5} />, title: 'Odhad ceny', desc: 'Dle nejmodernějších nástrojů určím přesnou hodnotu Vaší nemovitosti na trhu.' },
+              { icon: <Maximize size={32} strokeWidth={1.5} />, title: 'Vyhledání nemovitosti', desc: 'Vyhledání nemovitosti pro bydlení nebo investici s plným právním servisem a jistotou.' }
             ].map((service, i) => (
               <FadeIn key={i} delay={i * 0.1} className="service-card">
                 <div style={{ marginBottom: '2rem', color: 'var(--accent-blue)' }}>{service.icon}</div>
@@ -412,7 +419,7 @@ function App() {
         </section>
 
         {/* Local Expertise (Dark Section - Overlaps previous section) */}
-        <section id="lokality" className="section dark-section overlap-top" style={{ padding: '12rem 0' }}>
+        <section id="lokality" className="section dark-section overlap-top">
           {/* animated-noise removed - 300% x 300% SVG feTurbulence with infinite animation was a massive GPU drain */}
           <div className="architectural-grid"></div>
           <div className="blueprint-line horizontal" style={{ top: '10%' }}></div>
@@ -423,7 +430,7 @@ function App() {
               <span className="text-label">Lokální expertíza</span>
               <h2 className="heading-1">Specialista na Úvaly a Prahu</h2>
             </FadeIn>
-            <div className="grid-2-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8rem', alignItems: 'center', marginTop: '6rem' }}>
+            <div className="grid-2-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(2rem, 5vw, 8rem)', alignItems: 'center', marginTop: 'clamp(2rem, 5vh, 6rem)' }}>
               <FadeIn delay={0.2}>
                 <h3 className="heading-2" style={{ marginBottom: '2rem', fontSize: '3rem' }}>Znalost trhu,<br/>která se vyplatí</h3>
                 <p className="body-large" style={{ color: 'rgba(255,255,255,0.7)' }}>
@@ -438,7 +445,7 @@ function App() {
               <FadeIn delay={0.4} style={{ position: 'relative' }}>
                 <div className="map-pin-glow" style={{ top: '30%', left: '40%' }}></div>
                 <div className="map-pin-glow" style={{ top: '60%', left: '70%', animationDelay: '1s' }}></div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d655741.8195558321!2d13.806718568759415!3d50.058356646351335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xca639b7f039f8ed%3A0x73ef3a2619b4aae7!2s%C5%A0imon%20Syru%C4%8Dek%20RE%2FMAX%204%20You%20II!5e0!3m2!1sen!2scz!4v1779371255168!5m2!1sen!2scz" width="100%" height="600" style={{border:0, borderRadius: 'var(--radius-lg)', opacity: 0.8}} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d655741.8195558321!2d13.806718568759415!3d50.058356646351335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xca639b7f039f8ed%3A0x73ef3a2619b4aae7!2s%C5%A0imon%20Syru%C4%8Dek%20RE%2FMAX%204%20You%20II!5e0!3m2!1sen!2scz!4v1779371255168!5m2!1sen!2scz" width="100%" height="600" style={{border:0, height: 'min(56vh, 600px)', borderRadius: 'var(--radius-lg)', opacity: 0.8}} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
               </FadeIn>
             </div>
           </div>
@@ -454,25 +461,34 @@ function App() {
           <div className="timeline">
             <div className="timeline-line-bg"></div>
             <motion.div className="timeline-line-progress" style={{ width: isMobile ? '2px' : lineWidth, height: isMobile ? lineWidth : '2px' }}></motion.div>
-            
-            {['Konzultace', 'Ocenění', 'Příprava', 'Marketing', 'Prohlídky', 'Vyjednání', 'Převod'].map((step, i) => (
-              <motion.div 
+
+            {[
+              { title: 'Konzultace', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M9 16l2 2 4-4"/></svg> },
+              { title: 'Ocenění', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg> },
+              { title: 'Příprava', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg> },
+              { title: 'Marketing', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg> },
+              { title: 'Prohlídky', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> },
+              { title: 'Vyjednání', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M8 21h8M12 17v4"/><path d="M17 7H7l1 10h8l1-10z"/><path d="M7 7H5a2 2 0 0 0-2 2v1a4 4 0 0 0 4 4h1"/><path d="M17 7h2a2 2 0 0 1 2 2v1a4 4 0 0 1-4 4h-1"/></svg> },
+              { title: 'Převod', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg> },
+            ].map(({ title, icon }, i) => (
+              <motion.div
                 key={i}
-                whileHover={{ y: -20, scale: 1.05 }}
+                whileHover={{ y: -6, scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="timeline-step"
-                style={{ padding: '0 1rem', cursor: 'pointer' }}
+                style={{ cursor: 'pointer' }}
               >
                 <div className="timeline-number" style={{ transition: 'var(--transition)' }}>0{i+1}</div>
-                <h3 className="heading-3">{step}</h3>
-                <p style={{ color: '#666', marginTop: '1rem' }}>Detailní zaměření na preciznost v každém kroku procesu.</p>
+                <div className="timeline-icon">{icon}</div>
+                <h3 className="heading-3">{title}</h3>
+                <p style={{ color: '#666', marginTop: '0.5rem', fontSize: '0.875rem' }}>Detailní zaměření na preciznost v každém kroku procesu.</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* Featured Properties (Edge to Edge Cinematic Feature) */}
-        <section id="nabidky" className="section container" style={{ padding: '4rem 0' }}>
+        <section id="nabidky" className="section container" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
           <FadeIn>
             <span className="text-label">Vybraná nabídka</span>
           </FadeIn>
@@ -513,9 +529,9 @@ function App() {
           
           <div className="grid-asymmetric">
             <FadeIn delay={0.1}>
-              <div style={{ position: 'relative', height: '600px', borderRadius: 'var(--radius-lg)', overflow: 'hidden', cursor: 'pointer' }}>
+              <div style={{ position: 'relative', height: 'clamp(340px, 58vh, 600px)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', cursor: 'pointer' }}>
                 <img src="/images/p1302339-768x431.jpg" alt="Blog" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 1s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '4rem', color: 'white' }}>
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(1.5rem, 4vw, 4rem)', color: 'white' }}>
                   <span className="text-label" style={{ color: 'white' }}>Průvodce</span>
                   <h3 className="heading-2" style={{ color: 'white', margin: 0, fontSize: '3rem' }}>Jak připravit dům na prodej a zvýšit jeho hodnotu o 15 %</h3>
                 </div>
@@ -523,7 +539,7 @@ function App() {
             </FadeIn>
             <div className="card-stack">
               <FadeIn delay={0.3}>
-                <div style={{ position: 'relative', height: '284px', borderRadius: 'var(--radius-lg)', overflow: 'hidden', cursor: 'pointer' }}>
+                <div style={{ position: 'relative', height: 'clamp(160px, 27.5vh, 284px)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', cursor: 'pointer' }}>
                   <img src="/images/dji-20260427175452-0923-d-768x432.jpg" alt="Blog" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 1s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '2rem', color: 'white' }}>
                     <span className="text-label" style={{ color: 'white', marginBottom: '0.5rem' }}>Trh</span>
@@ -532,7 +548,7 @@ function App() {
                 </div>
               </FadeIn>
               <FadeIn delay={0.4}>
-                <div style={{ position: 'relative', height: '284px', borderRadius: 'var(--radius-lg)', overflow: 'hidden', cursor: 'pointer' }}>
+                <div style={{ position: 'relative', height: 'clamp(160px, 27.5vh, 284px)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', cursor: 'pointer' }}>
                   <img src="/images/dji-20260409155242-0425-d-768x432.jpg" alt="Blog" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 1s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '2rem', color: 'white' }}>
                     <span className="text-label" style={{ color: 'white', marginBottom: '0.5rem' }}>Hypotéky</span>
@@ -545,47 +561,37 @@ function App() {
         </section>
 
         {/* Testimonials */}
-        <section id="reference" className="section container" style={{ paddingBottom: '12rem' }}>
+        <section id="reference" className="section container" style={{ paddingBottom: 'clamp(4rem, 8vw, 12rem)' }}>
           <FadeIn>
-            <span className="text-label">Reference</span>
-            <h2 className="heading-2">Důvěra klientů</h2>
+            <span className="text-label">Co o mně říkají klienti</span>
+            <h2 className="heading-2">Nejlepší reklama je dobře odvedená práce!</h2>
           </FadeIn>
           
-          <div className="testimonials-grid" style={{ gridTemplateColumns: '1.2fr 1fr' }}>
+          <div className="testimonials-grid">
             <FadeIn delay={0.1} className="testimonial-card-dark" style={{ background: 'linear-gradient(135deg, rgba(20,20,20,0.9), rgba(0,0,0,0.9))' }}>
               <div className="quote-mark-huge">"</div>
               <div className="ambient-orb orb-blue" style={{ width: '300px', height: '300px', bottom: '-50px', right: '-50px', opacity: 0.2 }}></div>
-              <p className="body-large" style={{ color: 'white', position: 'relative', zIndex: 1, fontSize: '1.5rem' }}>
-                Šimon Syruček nás překvapil svým neuvěřitelně rychlým a lidským přístupem. Všechno zařídil, vysvětlil a prodej proběhl naprosto hladce. Zvláště oceňuji skvělé fotografie a video, které naši chalupu prodaly za první víkend.
+              <p className="body-large" style={{ color: 'rgba(255,255,255,0.5)', position: 'relative', zIndex: 1, fontSize: 'clamp(1rem, 1.2vw, 1.25rem)', marginBottom: 0, fontStyle: 'italic' }}>
+                Buďte mezi prvními klienty, kteří zanechají svou zkušenost.
               </p>
-              <div className="arch-line-h" style={{ margin: '2rem 0', background: 'rgba(255,255,255,0.1)' }}></div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'var(--accent-blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>RN</div>
-                <div>
-                  <div style={{ fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Rodina Novotná</div>
-                  <div style={{ fontSize: '0.875rem', opacity: 0.6 }}>Prodej chalupy</div>
-                </div>
-              </div>
             </FadeIn>
             <FadeIn delay={0.2} className="testimonial-card-dark">
               <div className="quote-mark-huge">"</div>
-              <p className="body-large" style={{ color: 'white', position: 'relative', zIndex: 1, fontSize: '1.25rem' }}>
-                Oceňuji obrovskou profesionalitu a transparentnost. Žádné plané sliby, jen tvrdá práce a perfektní výsledek. Pan Syruček je ukázkou moderního realitního makléře, kterému můžete absolutně věřit.
+              <p className="body-large" style={{ color: 'rgba(255,255,255,0.5)', position: 'relative', zIndex: 1, fontSize: 'clamp(1rem, 1.2vw, 1.25rem)', marginBottom: 0, fontStyle: 'italic' }}>
+                Každý obchod dokumentuji a měřím výsledky.
               </p>
-              <div className="arch-line-h" style={{ margin: '2rem 0', background: 'rgba(255,255,255,0.1)' }}></div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>PD</div>
-                <div>
-                  <div style={{ fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Petr Dvořák</div>
-                  <div style={{ fontSize: '0.875rem', opacity: 0.6 }}>Prodej bytu Praha</div>
-                </div>
-              </div>
+            </FadeIn>
+            <FadeIn delay={0.3} className="testimonial-card-dark">
+              <div className="quote-mark-huge">"</div>
+              <p className="body-large" style={{ color: 'rgba(255,255,255,0.5)', position: 'relative', zIndex: 1, fontSize: 'clamp(1rem, 1.2vw, 1.25rem)', marginBottom: 0, fontStyle: 'italic' }}>
+                Vaše spokojenost se zde může objevit jako další reference.
+              </p>
             </FadeIn>
           </div>
         </section>
 
         {/* Final CTA / Contact Section (Dark overlap) */}
-        <section id="kontakt" className="section dark-section overlap-top" style={{ padding: '12rem 0' }}>
+        <section id="kontakt" className="section dark-section overlap-top">
           {/* animated-noise removed for performance */}
           <div className="architectural-grid"></div>
           <div className="blueprint-line horizontal" style={{ top: '50%' }}></div>
@@ -595,19 +601,27 @@ function App() {
 
           <div className="container grid-2-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8rem', alignItems: 'center', position: 'relative', zIndex: 5 }}>
             <FadeIn>
-              <h2 className="heading-1" style={{ fontSize: 'clamp(3rem, 6vw, 6rem)' }}>Prodáváte<br/>nemovitost?</h2>
+              <h2 className="heading-1" style={{ fontSize: 'clamp(3rem, 6vw, 6rem)' }}>Potřebujete<br/>něco vyřešit?</h2>
               <p className="body-large" style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '4rem' }}>
-                Domluvme si nezávaznou konzultaci a proberme nejlepší postup pro váš prodej. Nečekejte na zázrak, svěřte to profesionálovi.
+                Realitní makléř, s kterým nešlápnete vedle. Domluvme si nezávaznou konzultaci a proberme nejlepší postup.
               </p>
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                 <div>
                   <div className="text-label" style={{ color: 'var(--accent-blue)', margin: 0 }}>Zavolejte mi</div>
-                  <div style={{ fontSize: '2.5rem', fontWeight: 300 }}>+420 724 786 789</div>
+                  <div style={{ fontSize: 'clamp(1.5rem, 5vw, 2.5rem)', fontWeight: 300 }}>+420 724 786 789</div>
                 </div>
                 <div>
                   <div className="text-label" style={{ color: 'var(--accent-blue)', margin: 0 }}>Napište mi e-mail</div>
-                  <div style={{ fontSize: '1.5rem', fontWeight: 300 }}>simon.syrucek@re-max.cz</div>
+                  <div style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.5rem)', fontWeight: 300 }}>simon.syrucek@re-max.cz</div>
+                </div>
+                <div>
+                  <div className="text-label" style={{ color: 'var(--accent-blue)', margin: 0 }}>Přidejte si mě na sítích</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', marginTop: '0.75rem' }}>
+                    <a href="#" style={{ color: 'var(--white)', display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1.1rem', textDecoration: 'none' }}><IconFacebook /> Facebook</a>
+                    <a href="#" style={{ color: 'var(--white)', display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1.1rem', textDecoration: 'none' }}><IconInstagram /> Instagram</a>
+                    <a href="#" style={{ color: 'var(--white)', display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1.1rem', textDecoration: 'none' }}><IconLinkedin /> LinkedIn</a>
+                  </div>
                 </div>
               </div>
             </FadeIn>
@@ -616,7 +630,7 @@ function App() {
               <div style={{ position: 'relative' }}>
                 {/* Ambient glow directly behind the form */}
                 <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle, rgba(0,84,166,0.3), transparent 70%)', opacity: 0.5, borderRadius: 'var(--radius-lg)' }}></div>
-                <div style={{ background: 'rgba(255,255,255,0.05)', padding: '5rem 4rem', borderRadius: 'var(--radius-lg)', border: '1px solid rgba(255,255,255,0.08)', position: 'relative', zIndex: 1 }}>
+                <div style={{ background: 'rgba(255,255,255,0.05)', padding: 'clamp(2rem, 8vw, 5rem) clamp(1.5rem, 6vw, 4rem)', borderRadius: 'var(--radius-lg)', border: '1px solid rgba(255,255,255,0.08)', position: 'relative', zIndex: 1 }}>
                   <h3 className="heading-3" style={{ marginBottom: '4rem', fontSize: '2rem' }}>Napište mi zprávu</h3>
                   <form>
                     <div className="form-group">
@@ -647,7 +661,7 @@ function App() {
           <div className="footer-grid">
             <div>
               <div className="logo" style={{ marginBottom: '2rem' }}>
-                <span className="logo-accent">RE</span><span className="logo-blue">/</span><span className="logo-accent">MAX</span> Šimon Syruček
+                <img src={remaxLogoSvg} alt="RE/MAX" style={{ height: '36px', width: 'auto', display: 'inline-block', verticalAlign: 'middle' }} /><span style={{ marginLeft: '1rem' }}>Šimon Syruček</span>
               </div>
               <p style={{ maxWidth: '400px', fontSize: '1.1rem' }}>Nezávislý podnikatel podnikající na základě živnostenského listu, IČ 23033797. Adresa: Antala Staška 511/40, Praha 4 - Krč.</p>
             </div>

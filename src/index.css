@@ -203,8 +203,7 @@ html, body {
   margin-top: -8rem;
   position: relative;
   z-index: 10;
-  border-top-left-radius: 48px;
-  border-top-right-radius: 48px;
+  border-radius: 48px;
 }
 /* Buttons */
 .btn {
@@ -220,6 +219,7 @@ html, body {
   border: none;
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .btn-primary {
@@ -276,11 +276,18 @@ html, body {
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
 }
 
-/* Sections */
+/* Sections — each fills the viewport, content vertically centered */
 .section {
-  padding: var(--spacing-xl) 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: clamp(4rem, 9vh, var(--spacing-xl));
+  padding-bottom: clamp(4rem, 9vh, var(--spacing-xl));
 }
 
 /* Architectural Lines */
@@ -288,7 +295,7 @@ html, body {
   width: 100%;
   height: 1px;
   background: rgba(0, 84, 166, 0.1);
-  margin: 4rem 0;
+  margin: clamp(2rem, 4vh, 4rem) 0;
 }
 .arch-line-v {
   position: absolute;
@@ -366,6 +373,10 @@ html, body {
   align-items: center;
 }
 
+.about-preview > * {
+  min-width: 0;
+}
+
 .about-image {
   width: 100%;
   aspect-ratio: 3/4;
@@ -377,6 +388,12 @@ html, body {
 .grid-asymmetric {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+}
+
+.grid-3-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
@@ -415,16 +432,17 @@ html, body {
 /* Services */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 1.5vw, 2rem);
 }
 
 .service-card {
   background: var(--white);
-  padding: 4rem 3rem;
+  padding: clamp(2rem, 4vh, 4rem) clamp(1.5rem, 2vw, 3rem);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
   transition: transform var(--transition), box-shadow var(--transition);
+  min-width: 0;
 }
 
 .service-icon {
@@ -441,52 +459,50 @@ html, body {
 
 /* Process Timeline */
 .timeline {
-  display: flex;
-  overflow-x: auto;
-  gap: 4rem;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1.25rem;
   padding: 2rem 0;
-  scrollbar-width: none;
   position: relative;
 }
-.timeline::-webkit-scrollbar {
+
+.timeline-line-bg,
+.timeline-line-progress {
   display: none;
 }
 
 .timeline-step {
-  min-width: 300px;
+  min-width: 0;
   position: relative;
+  padding: 1.5rem 0.875rem;
+  border-top: 2px solid var(--light-gray);
+  transition: border-color var(--transition);
 }
 
-.timeline-line-bg {
-  position: absolute;
-  top: 1.5rem;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: var(--light-gray);
-  z-index: -1;
+.timeline-step:hover {
+  border-top-color: var(--accent-blue);
 }
 
-.timeline-line-progress {
-  position: absolute;
-  top: 1.5rem;
-  left: 0;
-  height: 2px;
-  background: var(--accent-blue);
-  z-index: 0;
+.timeline-icon {
+  color: var(--accent-blue);
+  margin: 0.625rem 0 0.75rem;
+  display: block;
 }
 
 .timeline-number {
-  font-size: 3rem;
-  font-weight: 300;
-  color: var(--text-color);
-  background: var(--bg-color);
-  display: inline-block;
-  padding-right: 1rem;
-  margin-bottom: 1.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--accent-blue);
+  display: block;
   line-height: 1;
   position: relative;
   z-index: 1;
+}
+
+.timeline-step .heading-3 {
+  font-size: clamp(1rem, 1.15vw, 1.3rem);
+  margin-bottom: 0;
 }
 
 /* Featured Property (Edge to Edge) */
@@ -531,7 +547,7 @@ html, body {
 .slider-container {
   position: relative;
   width: 100%;
-  height: 70vh;
+  height: clamp(260px, 46vh, 600px);
   border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: ew-resize;
@@ -600,13 +616,13 @@ html, body {
 /* Testimonials */
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 3rem);
 }
 
 .testimonial-card-dark {
   background: rgba(0, 0, 0, 0.9);
-  padding: 4rem;
+  padding: clamp(2rem, 3.5vh, 4rem);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255,255,255,0.1);
   color: var(--white);
@@ -731,6 +747,9 @@ html, body {
   .grid-asymmetric {
     grid-template-columns: 1fr;
   }
+  .grid-3-col {
+    grid-template-columns: 1fr;
+  }
   .hero-cta {
     flex-direction: column !important;
     width: 100%;
@@ -810,48 +829,105 @@ html, body {
     padding: 0 !important;
     border-radius: var(--radius-lg);
   }
-  .timeline-step {
-    padding: 0 !important;
-  }
   .footer-massive-text {
     font-size: 15vw !important;
   }
 
   .timeline {
-    flex-direction: column !important;
-    overflow-x: visible !important;
+    grid-template-columns: 1fr !important;
     gap: 0 !important;
     padding: 0 !important;
   }
   .timeline-step {
     min-width: unset !important;
     padding: 0 0 2.5rem 4rem !important;
-    position: relative !important;
+    border-top: none !important;
+    border-left: 1px solid var(--light-gray) !important;
   }
   .timeline-step:last-child {
     padding-bottom: 0 !important;
+    border-left: none !important;
+  }
+  .timeline-step:hover {
+    border-top-color: transparent !important;
+  }
+  .timeline-icon {
+    margin: 0 0 0.5rem !important;
+  }
+  .timeline-icon svg {
+    width: 20px !important;
+    height: 20px !important;
   }
   .timeline-number {
     position: absolute !important;
-    left: 0 !important;
+    left: -1rem !important;
     top: 0 !important;
-    font-size: 1rem !important;
+    font-size: 0.7rem !important;
     font-weight: 600 !important;
     color: var(--accent-blue) !important;
     background: var(--bg-color) !important;
-    padding: 0 !important;
+    padding: 0 0.25rem !important;
     margin: 0 !important;
     width: 2rem !important;
     text-align: center !important;
+    letter-spacing: 0 !important;
   }
   .timeline-line-bg {
+    display: block !important;
     position: absolute !important;
     top: 0 !important;
     left: 0.9rem !important;
     width: 1px !important;
     height: 100% !important;
   }
+  /* Section padding — natural flow on mobile, no forced viewport height */
+  .section {
+    min-height: 0;
+    display: block;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  /* Dark overlap sections */
+  .overlap-top {
+    margin-top: -3rem;
+    border-radius: 24px;
+  }
+
+  /* Floating property glass card */
+  .floating-glass-card {
+    bottom: 1.5rem !important;
+    left: 1rem !important;
+    right: 1rem !important;
+    padding: 1.5rem !important;
+    max-width: none !important;
+    border-radius: 1.25rem !important;
+  }
+  .property-price {
+    font-size: 2rem !important;
+  }
+
+  /* Testimonials */
+  .testimonial-card-dark {
+    padding: 2rem;
+  }
+  .quote-mark-huge {
+    font-size: 7rem;
+    top: -1.5rem;
+    left: 1rem;
+  }
+
+  /* Grid gaps on mobile */
+  .grid-asymmetric,
+  .card-stack {
+    gap: 1.5rem;
+  }
+  .grid-3-col {
+    gap: 1.5rem;
+  }
+
   .timeline-line-progress {
+    display: block !important;
     position: absolute !important;
     top: 0 !important;
     left: 0.9rem !important;
